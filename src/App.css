@@ -1,0 +1,194 @@
+
+
+:root {
+  /* Colors */
+  --color-paprika:     #DD6031;
+  --color-burgundy:    #780116;
+  --color-ink:         #11151C;
+  --color-saffron:     #EAC435;
+  --color-light-gold:  #F9EA9A;
+  --color-white:       #FFFFFF;
+ 
+  /* Category accent overrides (used on card border/label) */
+  --color-asamyutha:   #780116;   /* burgundy */
+  --color-samyutha:    #11151C;   /* ink black */
+ 
+  /* Typography */
+  --font-display: 'Kurale', serif;
+  --font-body:    'Pragati Narrow', sans-serif;
+ 
+  --fs-title:    clamp(1.6rem, 4vw, 2.4rem);
+  --fs-subtitle: clamp(0.8rem, 2vw, 1rem);
+  --fs-card-name: clamp(1.6rem, 5vw, 2.8rem);
+  --fs-card-meaning: clamp(0.9rem, 2vw, 1.1rem);
+  --fs-label:    0.8rem;
+  --fs-count:    0.9rem;
+ 
+  /* Spacing */
+  --space-xs:  0.4rem;
+  --space-sm:  0.8rem;
+  --space-md:  1.5rem;
+  --space-lg:  2.5rem;
+  --space-xl:  4rem;
+ 
+  /* Card dimensions */
+  --card-width:      75vw;
+  --card-height:     50vh;
+  --card-radius:     16px;
+ 
+  /* Transitions */
+  --flip-duration: 0.55s;
+  --btn-transition: 0.15s ease;
+}
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+  background-color: var(--color-paprika);
+}
+body {
+  margin: 0;
+  background-color: var(--color-paprika);
+}
+
+/* ============================================================
+   APP SHELL (App.css)
+   ============================================================ */
+ 
+.app {
+  min-height: 100vh;
+  background-color: var(--color-paprika);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: var(--space-lg) var(--space-md);
+  font-family: var(--font-body);
+  color: var(--color-white);
+}
+ 
+.app_header {
+  text-align: center;
+  margin-bottom: var(--space-lg);
+}
+ 
+.app_title {
+  font-family: var(--font-display);
+  font-size: var(--fs-title);
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  margin: 0 0 var(--space-xs);
+}
+ 
+.app_subtitle {
+  font-size: var(--fs-subtitle);
+  opacity: 0.85;
+  margin: 0;
+}
+ 
+.app_deck-count {
+  margin: var(--space-sm) 0 var(--space-md);
+  font-size: var(--fs-count);
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+ 
+.app_deck-count span {
+  color: var(--color-saffron);
+  font-weight: 700;
+}
+ 
+ 
+/* ============================================================
+   CATEGORY BUTTONS
+   ============================================================ */
+ 
+.category-buttons {
+  display: flex;
+  gap: var(--space-sm);
+  margin-bottom: var(--space-lg);
+}
+ 
+.category-btn {
+  font-family: var(--font-body);
+  font-size: var(--fs-label);
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: var(--space-xs) var(--space-md);
+  border-radius: 999px;
+  border: 2px solid var(--color-saffron);
+  background: transparent;
+  color: var(--color-white);
+  cursor: pointer;
+  transition: background var(--btn-transition), color var(--btn-transition);
+}
+ 
+.category-btn:hover {
+  background: var(--color-saffron);
+  color: var(--color-ink);
+}
+ 
+.category-btn--active {
+  background: var(--color-saffron);
+  color: var(--color-ink);
+}
+
+.nav-buttons {
+  display: flex;
+  gap: var(--space-md);
+  margin-top: var(--space-sm);
+}
+ 
+.nav-btn {
+  width: 108px;
+  height: 52px;
+  border-radius: 999px;
+  border: none;
+  background: var(--color-saffron);
+  color: var(--color-ink);
+  font-size: 1.2rem;
+  font-family: var(--font-body);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background var(--btn-transition), transform var(--btn-transition);
+}
+ 
+.nav-btn:hover {
+  background: var(--color-light-gold);
+  transform: scale(1.08);
+}
+ 
+.nav-btn:active {
+  transform: scale(0.96);
+}
+ 
+ 
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+ 
+@media (max-width: 480px) {
+  .app {
+    padding: var(--space-md) var(--space-sm);
+  }
+ 
+  .category-buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+ 
+ 
+/* ============================================================
+   REDUCED MOTION
+   ============================================================ */
+ 
+@media (prefers-reduced-motion: reduce) {
+  .card {
+    transition: none;
+  }
+}

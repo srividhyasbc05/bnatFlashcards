@@ -1,0 +1,103 @@
+.card-scene {
+  width: var(--card-width);
+  height: var(--card-height);
+  perspective: 1200px;
+  cursor: pointer;
+  margin-bottom: var(--space-lg);
+}
+ 
+/* The flipping element */
+.card {
+  width: 100%;
+  min-height: 50vh;
+  height: 100%;
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform var(--flip-duration) cubic-bezier(0.4, 0, 0.2, 1);
+  border-radius: var(--card-radius);
+}
+ 
+/* Flipped state — toggled by adding this class via React */
+.card--flipped {
+  transform: rotateX(180deg);
+}
+ 
+/* Shared face styles */
+.card__face {
+  position: absolute;
+  inset: 0;
+  border-radius: var(--card-radius);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-md);
+  overflow: hidden;
+}
+ 
+/* FRONT — white card with image */
+.card__face--front {
+  background: var(--color-white);
+  /* Category-specific border color applied via inline style or modifier class */
+  border: 3px solid var(--color-burgundy);
+}
+ 
+/* Category modifier for border */
+.card__face--front.asamyutha { border-color: var(--color-burgundy); }
+.card__face--front.samyutha  { border-color: var(--color-ink); }
+ 
+.card__image {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+ 
+
+ 
+/* BACK — dark card with text */
+.card__face--back {
+  background: var(--color-ink);
+  border: 3px solid var(--color-white);
+  transform: rotateX(180deg);
+}
+ 
+.card__name {
+  font-family: var(--font-display);
+  font-size: var(--fs-card-name);
+  font-style: italic;
+  color: var(--color-saffron);
+  margin: 0 0 var(--space-xs);
+  text-align: center;
+}
+ 
+.card__meaning {
+  font-size: var(--fs-card-meaning);
+  color: var(--color-light-gold);
+  margin: 0 0 var(--space-sm);
+  text-align: center;
+  font-style: normal;
+  opacity: 0.9;
+}
+ 
+.card__description {
+  font-size: 0.82rem;
+  color: var(--color-white);
+  opacity: 0.7;
+  text-align: center;
+  line-height: 1.5;
+  max-width: 36ch;
+  margin: 0;
+}
+ 
+/* Flip hint shown on front face */
+.card__hint {
+  position: absolute;
+  bottom: var(--space-sm);
+  font-size: 0.7rem;
+  color: #999;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+ 
